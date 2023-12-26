@@ -20,8 +20,15 @@
 
 // getPostgresVersion();
 
-import { Express } from "express";
-import postgres from "postgres"
+import { express } from "express";
+import postgres from "postgres";
 const { Pool } = pg;
 
-app.use(bp)
+app.use(bp, json());
+const PORT = process.env.PORT || 3000;
+const app = express();
+
+app.use(bp.json());
+app.listen(PORT , ()=>{
+    console.log(`app running on port ${PORT}.`);
+})

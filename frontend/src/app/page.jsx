@@ -1,7 +1,8 @@
-// import { LogoIcon, LogoText } from "../../Components/Icons";
-
-// export default function Home() {
-//   return (
-// <div> </div>
-//   );
-// }
+export default function home() {
+  return(
+    <div>
+      
+    </div>
+  )
+  
+}

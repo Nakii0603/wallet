@@ -1,34 +1,77 @@
-// const { Pool } = require("pg");
-// require("dotenv").config();
+import express, { response } from "express";
+import dotenv from "dotenv";
+import bp from "body-parser";
+import { pool } from "./db.js";
 
-// const pool = new Pool({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     require: true,
-//   },
-// });
-
-// async function getPostgresVersion() {
-//   const client = await pool.connect();
-//   try {
-//     const response = await client.query("SELECT version()");
-//     console.log(response.rows[0]);
-//   } finally {
-//     client.release();
-//   }
-// }
-
-// getPostgresVersion();
-
-import { express } from "express";
-import postgres from "postgres";
-const { Pool } = pg;
-
-app.use(bp, json());
+dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app = express();
 
 app.use(bp.json());
-app.listen(PORT , ()=>{
-    console.log(`app running on port ${PORT}.`);
-})
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}.`);
+});
+
+app.get("/user", async (req, res) => {
+  try {
+    const queryText = `SELECT * FROM users`;
+    const response = await pool.query(queryText);
+    res.send(response.rows);
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+app.get("/user", async (req, res) => {
+  const { name, email } = req.body;
+  try {
+    const queryText = "SELECT * FROM users WHERE name=$1 AND email=$2";
+    const response = await pool.query(queryText, [name, email]);
+    res.send(response.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.post("/createTable", async (_, res) => {
+  try {
+    const tableQueryText = `
+    CREATE TABLE IF NOT EXISTS users (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL,
+    )`;
+    await pool.query(tableQueryText);
+    res.send("ok");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+app.post("/user", async (req, response) => {
+  const { name, email } = req.body;
+  console.log(name, email, "req.body");
+  try {
+    const queryText =
+      "INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *";
+    const res = await pool.query(queryText, [name, email]);
+    response.send(res.rows[0]);
+  } catch (error) {
+    console.error(error);
+    response.send("error query");
+  }
+});
+
+app.delete("/user/:id", async (req, res) => {
+  const userId = req.params.id;
+  try {
+    const queryText = 'DELETE FROM users WHERE id = $1';
+    await pool.query(queryText, [userId]);
+    res.send("ok");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+});

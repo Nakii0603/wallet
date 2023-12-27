@@ -1,19 +1,18 @@
-import express, { response } from "express";
+import express from "express";
 import dotenv from "dotenv";
 import bp from "body-parser";
 import { pool } from "./db.js";
 
 dotenv.config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 const app = express();
-
 app.use(bp.json());
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}.`);
 });
 
-app.get("/user", async (req, res) => {
+app.get("/users", async (req, res) => {
   try {
     const queryText = `SELECT * FROM users`;
     const response = await pool.query(queryText);
@@ -41,7 +40,7 @@ app.post("/createTable", async (_, res) => {
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
-      email VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL
     )`;
     await pool.query(tableQueryText);
     res.send("ok");
@@ -67,11 +66,11 @@ app.post("/user", async (req, response) => {
 app.delete("/user/:id", async (req, res) => {
   const userId = req.params.id;
   try {
-    const queryText = 'DELETE FROM users WHERE id = $1';
+    const queryText = "DELETE FROM users WHERE id = $1";
     await pool.query(queryText, [userId]);
     res.send("ok");
   } catch (error) {
     console.log(error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send("Internal Server Error");
   }
 });

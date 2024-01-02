@@ -1,3 +1,5 @@
+import { Geld } from "../../../Components/Icons";
+
 export default function email() {
   return (
     <div className="flex mx-auto justify-between w-full">
@@ -29,5 +31,5 @@ export default function email() {
       </div>
       <div className="bg-blue-600 w-1/2"></div>
     </div>
-  )
+  );
 }

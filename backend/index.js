@@ -4,7 +4,7 @@ import bp from "body-parser";
 import { pool } from "./db.js";
 
 dotenv.config();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 800;
 const app = express();
 app.use(bp.json());
 

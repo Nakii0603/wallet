@@ -1,3 +1,5 @@
+import { Geld } from "../../../Components/Icons";
+
 export default function () {
   return (
     <div className="flex justify-between w-full h-[100vh]">

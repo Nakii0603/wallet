@@ -1,3 +1,5 @@
+
+
 export const getOneUser = app.get("/user", async (req, res) => {
   const { name, email } = req.body;
   try {
@@ -9,6 +11,36 @@ export const getOneUser = app.get("/user", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
+export const getPost = app.post("/createTable", async (_, res) => {
+  try {
+    const tableQueryText = `
+    CREATE TABLE IF NOT EXISTS users (
+      id SERIAL PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      email VARCHAR(255) NOT NULL
+    )`;
+    await pool.query(tableQueryText);
+    res.send("ok");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+export const getUser = app.post("/user", async (req, response) => {
+  const { name, email } = req.body;
+  console.log(name, email, "req.body");
+  try {
+    const queryText =
+      "INSERT INTO users (name, email) VALUES ($1, $2) RETURNING *";
+    const res = await pool.query(queryText, [name, email]);
+    response.send(res.rows[0]);
+  } catch (error) {
+    console.error(error);
+    response.send("error query");
+  }
+});
+
 export const getUsers = app.get("/users", async (req, res) => {
   try {
     const queryText = `SELECT * FROM users`;
@@ -18,6 +50,7 @@ export const getUsers = app.get("/users", async (req, res) => {
     console.error(error);
   }
 });
+
 export const deleteUser = app.delete("/user/:id", async (req, res) => {
   const userId = req.params.id;
   try {

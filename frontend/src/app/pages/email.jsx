@@ -1,10 +1,10 @@
-import { Geld } from "../../../Components/Icons";
+import { GeldLogo } from "../../../Components/Icons";
 
 export default function email() {
   return (
     <div className="flex mx-auto justify-between w-full">
       <div className="flex flex-col gap-4 mx-auto w-fit text-center h-[100vh] justify-center">
-        <Geld />
+        <GeldLogo />
         <h1 className="text-black font-semibold">Welcome Back</h1>
         <p>Welcome back, Please enter your details</p>
         <div className="flex flex-col gap-2">

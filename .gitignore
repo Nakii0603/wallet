@@ -42,9 +42,16 @@ build/Release
 node_modules/
 jspm_packages/
 
-# Snowpack dependency directory (https://snowpack.dev/)
+# Snowpack dependency directory (https://snowpack.d`/)
 web_modules/
 
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+ 
 # TypeScript cache
 *.tsbuildinfo
 

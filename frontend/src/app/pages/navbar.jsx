@@ -1,4 +1,4 @@
-import { Geld } from "../../../Components/Icons";
+import { GeldLogo } from "../../../Components/Icons";
 
 export default function navbar() {
   return (
@@ -6,7 +6,7 @@ export default function navbar() {
       <div className="flex max-w-screen-xl justify-between mx-auto w-full">
         <div className="flex gap-9">
           <button>
-            <Geld />
+            <Geldlogo />
           </button>
           <button className="font-semibold">Dashboard</button>
           <button>Records</button>

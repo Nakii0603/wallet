@@ -1,10 +1,14 @@
-import { Geld } from "../../../Components/Icons";
+import { GeldLogo, LogoText } from "../../../Components/Icons";
 
-export default function () {
+export default function createPage () {
   return (
     <div className="flex justify-between w-full h-[100vh]">
       <div className="flex flex-col gap-4 justify-center text-center mx-auto">
-        <Geld />
+        <div className=" flex justify-center gap-[10px] items-center">
+          <GeldLogo />
+          <LogoText/>
+        </div>
+        
         <h1>Create Geld account</h1>
         <p>Sign up below to create your Wallet account</p>
         <div className="flex flex-col gap-3">

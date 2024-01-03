@@ -1,4 +1,4 @@
-function Geld() {
+function GeldLogo() {
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -43,4 +43,4 @@ function LogoText() {
       </svg>
     );
 }
-export{ Geld, LogoText }
+export{ GeldLogo, LogoText }

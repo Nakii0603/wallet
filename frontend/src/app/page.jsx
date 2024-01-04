@@ -1,10 +1,9 @@
-import CreatePage from "./pages/createPage"
+import CreatePage from "./pages/createPage";
 
 export default function home() {
-  return(
+  return (
     <div>
-      <CreatePage/>
+      <CreatePage />
     </div>
-  )
-  
+  );
 }

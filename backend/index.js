@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import { user } from "./router/user.js";
 
 dotenv.config();
-const PORT = process.env.PORT || 8021;
+const PORT = process.env.PORT || 8030;
 const app = express();
 app.use(express.json());
 app.use("/users", user);

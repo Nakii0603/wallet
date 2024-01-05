@@ -1,9 +1,12 @@
-import CreatePage from "./pages/createPage";
+import SignPage from "./pages/signPage";
+import Loading from "./pages/loading"
 
 export default function home() {
   return (
     <div>
-      <CreatePage />
+      <SignPage />
+      <Loading/>
     </div>
   );
 }
+  

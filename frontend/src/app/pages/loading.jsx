@@ -1,4 +1,4 @@
-import { GeldLogo, GeldLogo } from "../../../Components/Icons";
+import { GeldLogo } from "../../../Components/Icons";
 
 export default function loading() {
   return (

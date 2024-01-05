@@ -43,13 +43,13 @@ export const getUsers =
   });
 
 export const deleteUser =
-  ("/user",
+  (
   async (req, res) => {
-    const { userId, name, email } = req.body;
+    const { id, name, email } = req.body;
     console.log(req.body);
     try {
       const queryText = `DELETE FROM users WHERE id = $1`;
-      const result = await pool.query(queryText, [userId]);
+      const result = await pool.query(queryText, [id]);
       res.send({ result });
     } catch (error) {
       console.log(error);

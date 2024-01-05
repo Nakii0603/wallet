@@ -2,13 +2,17 @@ import express from "express";
 import dotenv from "dotenv";
 import { user } from "./router/user.js";
 import { pool } from "./db.js";
+import cors from "cors";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT || 8002;
 const app = express();
 
+app.use(cors({ origin: "*" }));
+
 app.use(express.json());
+
 app.use("/users", user);
 
 app.listen(PORT, () => {

@@ -7,7 +7,8 @@ export default function createPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [rePassword, setRePassword] = useState("");
+
+  
   const handleSignUp = async () => {
     try {
       const response = await axios.post("http://localhost:8002/users", {

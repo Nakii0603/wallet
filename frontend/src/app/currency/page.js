@@ -1,4 +1,5 @@
 import Geld from "../../../Components/Geld";
+import { Dollar } from "../../../Components/Icons";
 
 
 export default function currency() {

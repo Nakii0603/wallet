@@ -1,14 +1,14 @@
 "use client";
-import { GeldLogo, LogoText } from "../../../Components/Icons";
 import axios from "axios";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Geld from "../../../Components/Geld";
 
 export default function createPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  
   const handleSignUp = async () => {
     try {
       const response = await axios.post("http://localhost:8002/users", {
@@ -21,13 +21,21 @@ export default function createPage() {
       console.log("sign up" + error);
     }
   };
+
+  const login = () => router.push("app");
+  const keys = { name, email, password };
+  const router = useRouter();
+
+  const currency = () => {
+    router.push("currency");
+    localStorage.setItem("data", JSON.stringify(keys));
+    console.log(keys);
+  };
+
   return (
     <div className="flex justify-between w-full h-[100vh]">
       <div className="flex flex-col gap-4 justify-center text-center mx-auto">
-        <div className=" flex justify-center gap-[10px] items-center">
-          <GeldLogo />
-          <LogoText />
-        </div>
+       <Geld/>
         <h1>Create Geld account</h1>
         <p>Sign up below to create your Wallet account</p>
         <div className="flex flex-col gap-3">
@@ -60,10 +68,14 @@ export default function createPage() {
             onChange={(e) => setRePassword(e.target.value)}
           /> */}
         </div>
-        <button onClick={handleSignUp} className="btn text-white bg-blue-600 rounded-3xl">
+
+        <button
+          onClick={currency}
+          className="btn text-white bg-blue-600 rounded-3xl"
+        >
           Sign up
         </button>
-        <div className="flex gap-3" >
+        <div className="flex gap-3">
           <p>Already have account?</p>
           <button className="text-blue-500">Log in</button>
         </div>

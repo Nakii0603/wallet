@@ -1,13 +1,11 @@
-const { GeldLogo, Dollar, LogoText } = require("../../../Components/Icons");
+import Geld from "../../../Components/Geld";
 
-export const Currency = () => {
+
+export default function currency() {
   return (
     <div className="flex flex-col mx-auto  w-[400px] h-[100vh] justify-center">
       <div className="flex flex-col mb-[140px]  w-3/5 mx-auto gap-3">
-        <div className="flex justify-center gap-[10px] items-center">
-          <GeldLogo />
-          <LogoText />
-        </div>
+        <Geld/>
         <div className="steps">
           <div className="step step-neutral">Currency</div>
           <div className="step">Finish</div>
@@ -43,4 +41,4 @@ export const Currency = () => {
       </div>
     </div>
   );
-};
+}

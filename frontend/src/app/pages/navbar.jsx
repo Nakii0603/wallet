@@ -12,14 +12,10 @@ export default function navbar() {
           <button>Records</button>
         </div>
         <div className="flex ledaing-none gap-9 items-center">
-          <button className="flex items-center w-fit px-4 h-8 bg-blue-600 text-white rounded-3xl">
-        
-          </button>
-          <button className="avatar online">
-            
-          </button>
+          <button className="flex items-center w-fit px-4 h-8 bg-blue-600 text-white rounded-3xl"></button>
+          <button className="avatar online"></button>
         </div>
       </div>
     </div>
-  )
+  );
 }

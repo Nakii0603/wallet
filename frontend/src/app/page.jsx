@@ -1,6 +1,6 @@
 
 
-import SignPage from "./pages/signPage";
+import SignPage from "./sign/signPage";
 import Finish from "./gotodashboard/page";
 import Currency from "./currency/page";
 

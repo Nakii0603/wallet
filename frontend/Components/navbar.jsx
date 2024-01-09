@@ -1,4 +1,4 @@
-import { GeldLogo } from "../../../Components/Icons";
+import { GeldLogo } from "./Icons";
 
 export default function navbar() {
   return (

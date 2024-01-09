@@ -1,5 +1,4 @@
 "use client";
-import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Geld from "../../../Components/Geld";
@@ -8,25 +7,9 @@ export default function createPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSignUp = async () => {
-    try {
-      const response = await axios.post("http://localhost:8002/users", {
-        name,
-        email,
-        password,
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.log("sign up" + error);
-    }
-  };
-
-  const login = () => router.push("app");
-  const keys = { name, email, password };
+  const keys = { name, email, password,  };
   const router = useRouter();
-
-  const currency = () => {
+  const jumpCurrency = () => {
     router.push("currency");
     localStorage.setItem("data", JSON.stringify(keys));
     console.log(keys);
@@ -35,7 +18,7 @@ export default function createPage() {
   return (
     <div className="flex justify-between w-full h-[100vh]">
       <div className="flex flex-col gap-4 justify-center text-center mx-auto">
-       <Geld/>
+        <Geld />
         <h1>Create Geld account</h1>
         <p>Sign up below to create your Wallet account</p>
         <div className="flex flex-col gap-3">
@@ -70,7 +53,7 @@ export default function createPage() {
         </div>
 
         <button
-          onClick={currency}
+          onClick={jumpCurrency}
           className="btn text-white bg-blue-600 rounded-3xl"
         >
           Sign up

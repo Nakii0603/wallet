@@ -1,14 +1,13 @@
 
 
 import SignPage from "./pages/signPage";
-import Loading from "./pages/loading";
 import Finish from "./gotodashboard/page";
+import Currency from "./currency/page";
 
 export default function home() {
   return (
     <div>
       <SignPage />
-      <Finish/>
     </div>
   );
 }

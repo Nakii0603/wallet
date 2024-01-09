@@ -3,22 +3,21 @@ import axios from "axios";
 import Geld from "../../../Components/Geld";
 
 export default function () {
-  const hundlePushData = async () => {
-    try {
+const hundlePushData = async () => {
+  try {
+    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8002";
+    const response = await axios.post(`${apiUrl}/users`, {
+      name,
+      email,
+      password,
+      currency,
+    });
+    let data = JSON.parse(window.localStorage.getItem("data"));
+  } catch (error) {
+    console.log("data PUSH " + error);
+  }
+};
 
-      let data = JSON.parse(window.localStorage.getItem("data"));
-
-      const response = await axios.post("http://localhost:8002/users", {
-        name,
-        email,
-        password,
-        currency,
-      });
-
-    } catch (error) {
-      console.log("data PUSH " + error);
-    }
-  };
   return (
     <div className="flex flex-col mx-auto w-[400px] gap-36 h-[100vh] mt-20">
       <div className="flex flex-col w-3/5 mx-auto gap-3 justify-start">

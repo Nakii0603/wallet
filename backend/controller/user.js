@@ -25,7 +25,7 @@ export const createUser =
       response.send(res.rows[0]);
     } catch (error) {
       console.error(error);
-      response.send("error query");
+      response.send("ERROR query");
     }
   });
 

@@ -1,13 +1,12 @@
 
 
 import SignPage from "./sign/signPage";
-import Finish from "./gotodashboard/page";
-import Currency from "./currency/page";
+import LogInPage from "./login/LogInPage";
 
 export default function home() {
   return (
     <div>
-      <SignPage />
+      <LogInPage/>
     </div>
   );
 }

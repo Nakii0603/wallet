@@ -1,22 +1,27 @@
 "use client";
 import axios from "axios";
 import Geld from "../../../Components/Geld";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function () {
-const hundlePushData = async () => {
-  try {
-    const apiUrl = process.env.REACT_APP_API_URL || "http://localhost:8002";
-    const response = await axios.post(`${apiUrl}/users`, {
-      name,
-      email,
-      password,
-      currency,
-    });
-    let data = JSON.parse(window.localStorage.getItem("data"));
-  } catch (error) {
-    console.log("data PUSH " + error);
-  }
-};
+  const [Data, SetData] = useState([]);
+  const router = useRouter();
+  const hundlePushData = async () => {
+    const apiUrl =
+      process.env.REACT_APP_API_URL || "http://localhost:8000/users";
+    try {
+      const data = window.localStorage.getItem("data");
+      const d = data !== null ? JSON.parse(data) : [];
+      console.log(d);
+      SetData(d);
+      const res = await axios.post(apiUrl, { ...d });
+      console.log(res.data);
+      router.push("dashboard");
+    } catch (error) {
+      console.log("data PUSH " + error);
+    }
+  };
 
   return (
     <div className="flex flex-col mx-auto w-[400px] gap-36 h-[100vh] mt-20">

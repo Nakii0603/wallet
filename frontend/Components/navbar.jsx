@@ -1,12 +1,12 @@
 import { GeldLogo } from "./Icons";
 
-export default function navbar() {
+export default function Navbar() {
   return (
     <div className="flex flex-col w-full py-5 bg-white">
       <div className="flex max-w-screen-xl justify-between mx-auto w-full">
         <div className="flex gap-9">
           <button>
-            <Geldlogo />
+            <GeldLogo/>
           </button>
           <button className="font-semibold">Dashboard</button>
           <button>Records</button>

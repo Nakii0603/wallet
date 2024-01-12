@@ -27,14 +27,14 @@ const BarChart = () => {
       {
         label: false,
         data: [3000000, 3000000, 3000000, 3000000, 3000000, 3000000, 3000000],
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgb(132,204,22)",
+        borderColor: "rgb(106, 90, 205)",
+        backgroundColor: "rgb(106, 90, 205)",
       },
       {
         label: false,
         data: [2100000, 2100000, 2100000, 2100000, 2100000, 2100000, 2100000],
-        borderColor: "rgb(53, 162, 235)",
-        backgroundColor: "rgb(249,115,22)",
+        borderColor: "rgba(255, 99, 71, 0.6)",
+        backgroundColor: "rgba(255, 99, 71, 0.6)",
       },
     ],
   });

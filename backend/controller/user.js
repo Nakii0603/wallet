@@ -12,22 +12,19 @@ export const getOneUser =
       res.status(500).send("Internal Server Error");
     }
   });
-
-export const createUser =
-  ("/user",
-  async (req, response) => {
-    const { name, email, password } = req.body;
-    console.log(name, email, password, "req.body");
-    try {
-      const queryText =
-        "INSERT INTO users (name, email,password) VALUES ($1, $2,$3) RETURNING *";
-      const res = await pool.query(queryText, [name, email, password]);
-      response.send(res.rows[0]);
-    } catch (error) {
-      console.error(error);
-      response.send("ERROR query");
-    }
-  });
+export const createUser = async (req, response) => {
+  const { name, email, password } = req.body;
+  console.log(req.body);
+  try {
+    const queryText =
+      "INSERT INTO users (name, email,password) VALUES ($1, $2,$3) RETURNING *";
+    const res = await pool.query(queryText, [name, email, password]);
+    response.send(res.rows[0]);
+  } catch (error) {
+    console.error(error);
+    response.send("ERROR query");
+  }
+};
 
 export const getUsers =
   ("/users",
@@ -41,17 +38,15 @@ export const getUsers =
     }
   });
 
-export const deleteUser =
-  (
-  async (req, res) => {
-    const { id, name, email } = req.body;
-    console.log(req.body);
-    try {
-      const queryText = `DELETE FROM users WHERE id = $1`;
-      const result = await pool.query(queryText, [id]);
-      res.send({ result });
-    } catch (error) {
-      console.log(error);
-      res.status(500).send("Internal Server Error");
-    }
-  });
+export const deleteUser = async (req, res) => {
+  const { id, name, email } = req.body;
+  console.log(req.body);
+  try {
+    const queryText = `DELETE FROM users WHERE id = $1`;
+    const result = await pool.query(queryText, [id]);
+    res.send({ result });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
+};

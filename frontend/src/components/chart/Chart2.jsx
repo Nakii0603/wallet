@@ -27,7 +27,7 @@ const PieChart = () => {
     labels: ["Bills", "Food", "Shopping", "Insurence", "Clothing"],
     datasets: [
       {
-        data: [1000000, 5000000, 8000000, 4000000, 2000000],
+        data: [100000, 500000, 800000, 400000, 200000],
         backgroundColor: [
           "rgba(22, 189, 202, 1)",
           "rgba(28, 100, 242, 1)",

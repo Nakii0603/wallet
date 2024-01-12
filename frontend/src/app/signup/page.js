@@ -9,7 +9,7 @@ export default function () {
   const router = useRouter();
   const hundlePushData = async () => {
     const apiUrl =
-      process.env.REACT_APP_API_URL || "http://localhost:8000/users";
+      process.env.REACT_APP_API_URL || "http://localhost:8010/users";
     try {
       const data = window.localStorage.getItem("data");
       const d = data !== null ? JSON.parse(data) : [];
@@ -17,7 +17,7 @@ export default function () {
       SetData(d);
       const res = await axios.post(apiUrl, { ...d });
       console.log(res.data);
-      router.push("dashboard");
+      router.push("dashboard");  
     } catch (error) {
       console.log("data PUSH " + error);
     }

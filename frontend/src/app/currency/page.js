@@ -15,7 +15,7 @@ export default function Currency() {
         JSON.stringify({ ...data, currency: valiut })
       );
       console.log(valiut);
-      router.push("gotodashboard");
+      router.push("dashboard");
       console.log(data, "data");
     } catch (error) {
       console.log("select valiut " + error);

@@ -6,12 +6,12 @@ import cors from "cors";
 
 dotenv.config();
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8010;
 const app = express();
 
 app.use(cors({ origin: "*" }));
 
-app.use(express.json());
+// app.use(express.json());
 
 app.use("/users", user);
 
@@ -23,7 +23,7 @@ app.post("/createTable", async (_, res) => {
   try {
     const tableQueryText = `
     CREATE TABLE IF NOT EXISTS users (
-      id SERIAL PRIMARY KEY,
+      id uuid(),
       name VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL,
       password VARCHAR(255) NOT NULL,
@@ -53,6 +53,16 @@ app.post("/createTableCategory", async (_, res) => {
     res.send("ok");
   } catch (error) {
     console.error(error);
+  }
+});
+
+const enableUuidOsspExtensionQuery =
+  'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"';
+pool.query(enableUuidOsspExtensionQuery, (err, result) => {
+  if (err) {
+    console.error("Error enabling uuid-ossp extension:", err);
+  } else {
+    console.log("uuid-ossp extension  enabled");
   }
 });
 

@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import Geld from "../../../Components/Geld";
+import Geld from "../../components/Geld";
 
 export default function LogInPage() {
   const router = useRouter();

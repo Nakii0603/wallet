@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import Geld from "../../../Components/Geld";
+import Geld from "../../components/Geld";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -17,7 +17,7 @@ export default function () {
       SetData(d);
       const res = await axios.post(apiUrl, { ...d });
       console.log(res.data);
-      router.push("dashboard");  
+      router.push("dashboard");
     } catch (error) {
       console.log("data PUSH " + error);
     }

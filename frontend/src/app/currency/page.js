@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import Geld from "../../../Components/Geld";
-import { Dollar } from "../../../Components/Icons";
+import Geld from "../../components/Geld";
+import { Dollar } from "../../components/Icons";
 import { useRouter } from "next/navigation";
 
 export default function Currency() {

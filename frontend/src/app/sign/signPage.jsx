@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Geld from "../../../Components/Geld";
+import Geld from "../../components/Geld";
 
 export default function createPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const keys = { name, email, password,  };
+  const keys = { name, email, password };
   const router = useRouter();
   const jumpCurrency = () => {
     router.push("currency");

@@ -37,7 +37,7 @@ app.post("/createTable", async (_, res) => {
       password TEXT,
       avatar_img BYTEA,
       createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,
       currency_type TEXT 
     )`;
     await pool.query(tableQueryText);

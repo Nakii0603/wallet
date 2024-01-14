@@ -3,25 +3,32 @@ import { useState } from "react";
 import Geld from "../../components/Geld";
 import { Dollar } from "../../components/Icons";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function Currency() {
   const [valiut, setValiut] = useState("");
   const router = useRouter();
   const handleConfirmCurrency = async () => {
-    try {
-      let data = JSON.parse(window.localStorage.getItem("data"));
-      window.localStorage.setItem(
-        "data",
-        JSON.stringify({ ...data, currency: valiut })
-      );
-      console.log(valiut);
-      router.push("dashboard");
-      console.log(data, "data");
-    } catch (error) {
-      console.log("select valiut " + error);
-    }
-  };
+      try {
+        let data = JSON.parse(window.localStorage.getItem("data"));
+        window.localStorage.setItem(
+          "data",
+          JSON.stringify({ ...data, currency: valiut })
+        );
+        console.log(valiut);
+        router.push("dashboard");
+        console.log(data, "data");
 
+        const response = await axios.post("http://localhost:8010/users", {
+          currency: valiut, 
+        });
+
+
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error updating data with currency:", error);
+      }
+  };
   return (
     <div className="flex flex-col mx-auto  w-[400px] h-[100vh] justify-center">
       <div className="flex flex-col mb-[140px]  w-3/5 mx-auto gap-3">

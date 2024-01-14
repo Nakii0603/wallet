@@ -20,7 +20,7 @@ pool.query(enableUuidOsspExtensionQuery, (err, result) => {
   if (err) {
     console.error("Error enabling uuid-ossp extension:", err);
   } else {
-    console.log("uuid-ossp extension  enabled");
+    console.log("uuid-ossp extension enabled");
   }
 });
 app.listen(PORT, () => {
@@ -34,7 +34,7 @@ app.post("/createTable", async (_, res) => {
       id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
       name VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL,
-      password TEXT,
+      password TEXT NOT NULL,
       avatar_img BYTEA,
       createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ,

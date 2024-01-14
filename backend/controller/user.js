@@ -24,8 +24,7 @@ export const createUser = async (req, response) => {
     console.error(error);
     response.send("ERROR query");
   }
-};
-
+}                                              
 export const getUsers =
   ("/users",
   async (req, res) => {

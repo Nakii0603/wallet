@@ -1,5 +1,6 @@
 import { RecoredAside } from "@/utils/RecoredAside";
 import { Plus } from "../../public/Icons";
+import Modal from "./recordModal";
 
 export default function () {
   return (
@@ -8,8 +9,9 @@ export default function () {
       <div className="flex flex-col gap-6">
         <button  className="flex bg-blue-600 p-1 rounded-3xl text-white w-full justify-center items-center gap-2">
           <Plus /> Add
+          <Modal/>
         </button>
-        
+
         <input
           type="search"
           className="border-2 border-gray-400 p-1 rounded-lg"
@@ -56,5 +58,6 @@ export default function () {
         />
       </div>
     </div>
+
   );
 }

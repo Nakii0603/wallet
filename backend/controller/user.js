@@ -24,7 +24,7 @@ export const createUser = async (req, response) => {
     console.error(error);
     response.send("ERROR query");
   }
-}                                              
+};
 export const getUsers =
   ("/users",
   async (req, res) => {
@@ -47,5 +47,25 @@ export const deleteUser = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal Server Error");
+  }
+};
+
+export const loginUser = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    console.log(req.body);
+    const queryText = `SELECT * FROM users WHERE email = '${email}'`;
+    const find = await pool.query(queryText);
+
+    if (find.rows.length === 0) {
+      return res.send("cannot found this user");
+    }
+    if (find.rows[0].password != password) {
+      return res.send("username or password incorrect");
+    }
+
+    res.send("ok");
+  } catch (error) {
+    console.error(error);
   }
 };

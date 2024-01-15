@@ -16,7 +16,7 @@ export default function Currency() {
           JSON.stringify({ ...data, currency: valiut })
         );
         console.log(valiut);
-        router.push("signup");
+        router.push("finish");
         console.log(data, "data");
 
         const response = await axios.post("http://localhost:8010/users", {

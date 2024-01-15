@@ -1,12 +1,28 @@
 "use client";
 import { useRouter } from "next/navigation";
 import Geld from "../../components/Geld";
+import { useState } from "react";
 
-export default function LogInPage() {
+export default function LoginPage() {
   const router = useRouter();
-  const pageSwitcher = () => {
-    router.push("signup");
+  const jump = () => {
+    router.push("sign");
   };
+
+  const [email, setEmail] = ("");
+  const [password, setPassword] = ("");
+
+  const handleLogin = () => {
+    try {
+      const response = axios.post("http://localhost:8010/users", {
+        email,
+        password,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex mx-auto justify-between w-full">
       <div className="flex flex-col gap-4 mx-auto w-fit text-center h-[100vh] justify-center">
@@ -30,7 +46,7 @@ export default function LogInPage() {
         </div>
         <div className="flex gap-2 mx-auto">
           <p>Don’t have account?</p>
-          <button onClick={pageSwitcher} className="text-blue-500">
+          <button onClick={jump} className="text-blue-500">
             Sign up
           </button>
         </div>

@@ -1,5 +1,5 @@
-import SignPage from "./sign/signPage";
-import LogInPage from "./login/LogInPage";
+import SignPage from "./sign/page";
+import LogInPage from "./login/page";
 import Dashboard from "./dashboard/page";
 import { GeldLogo } from "../components/Icons";
 import Navbar from "../components/navbar";

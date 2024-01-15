@@ -9,6 +9,11 @@ export default function createPage() {
   const [password, setPassword] = useState("");
   const keys = { name, email, password };
   const router = useRouter();
+
+  const jumpLogin = () => {
+    router.push("login");
+  };
+
   const jumpCurrency = () => {
     router.push("currency");
     localStorage.setItem("data", JSON.stringify(keys));
@@ -43,24 +48,18 @@ export default function createPage() {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          {/* <input
-            value={rePassword}
-            className="border-2 rounded-xl border-gray-300 p-2"
-            type="password"
-            placeholder="Re-Password"
-            onChange={(e) => setRePassword(e.target.value)}
-          /> */}
         </div>
-
         <button
           onClick={jumpCurrency}
           className="btn text-white bg-blue-600 rounded-3xl"
         >
           Sign up
         </button>
-        <div className="flex gap-3">
+        <div className="flex gap-3 justify-center">
           <p>Already have account?</p>
-          <button className="text-blue-500">Log in</button>
+          <button onClick={jumpLogin} className="text-blue-500">
+            Log in
+          </button>
         </div>
       </div>
       <div className="bg-blue-600 w-1/2"></div>

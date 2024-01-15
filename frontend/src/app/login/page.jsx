@@ -10,18 +10,31 @@ export default function LoginPage() {
     router.push("sign");
   };
 
-  const [email, setEmail] = ("");
-  const [password, setPassword] = ("");
+  const [email, setEmail] = "";
+  const [password, setPassword] = "";
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     try {
-      const response = axios.post("http://localhost:8010/users",{
+      setLoading(true);
+      const response = await axios.post("http://localhost:8010/users", {
         email,
         password,
       });
+
+      if (response.data === "ok") {
+        router.push(`/dashboard/${email}`);
+      } else {
+        console.log("Login failed:", response.data);
+        setError("Invalid email or password");
+      }
       console.log(response);
     } catch (error) {
-      console.log(error);
+      console.error("Login error:", error);
+      setError("An error occurred during login. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -42,7 +55,10 @@ export default function LoginPage() {
             type="password"
             placeholder="Password"
           />
-          <button onClick={handleLogin} className="btn bg-blue-600 text-white rounded-3xl">
+          <button
+            onClick={handleLogin}
+            className="btn bg-blue-600 text-white rounded-3xl"
+          >
             Log in
           </button>
         </div>

@@ -22,7 +22,7 @@ export const createUser = async (req, response) => {
     response.send(res.rows[0]);
   } catch (error) {
     console.error(error);
-    response.send("ERROR query");
+    response.send("query error");
   }
 };
 export const getUsers =
@@ -63,7 +63,6 @@ export const loginUser = async (req, res) => {
     if (find.rows[0].password != password) {
       return res.send("username or password incorrect");
     }
-
     res.send("ok");
   } catch (error) {
     console.error(error);

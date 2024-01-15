@@ -9,9 +9,7 @@ export default function () {
       <div className="flex flex-col gap-6">
         <button  className="flex bg-blue-600 p-1 rounded-3xl text-white w-full justify-center items-center gap-2">
           <Plus /> Add
-          <Modal/>
         </button>
-
         <input
           type="search"
           className="border-2 border-gray-400 p-1 rounded-lg"

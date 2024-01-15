@@ -17,24 +17,12 @@ export default function LoginPage() {
 
   const handleLogin = async () => {
     try {
-      setLoading(true);
       const response = await axios.post("http://localhost:8010/users", {
         email,
         password,
       });
-
-      if (response.data === "ok") {
-        router.push(`/dashboard/${email}`);
-      } else {
-        console.log("Login failed:", response.data);
-        setError("Invalid email or password");
-      }
-      console.log(response);
-    } catch (error) {
-      console.error("Login error:", error);
-      setError("An error occurred during login. Please try again later.");
-    } finally {
-      setLoading(false);
+    } catch {
+      console.error(err);
     }
   };
 

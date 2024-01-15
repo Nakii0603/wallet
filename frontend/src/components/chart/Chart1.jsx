@@ -42,10 +42,10 @@ const BarChart = () => {
   const [chartOptions, setChartOptions] = useState({
     plugins: {
       tooltip: {
-        enabled: false, 
+        enabled: false,
       },
       legend: {
-        display: false, 
+        display: false,
         position: "right",
       },
       scales: {
@@ -56,7 +56,7 @@ const BarChart = () => {
     },
     elements: {
       arc: {
-        borderWidth: 0, 
+        borderWidth: 0,
       },
     },
   });

@@ -41,7 +41,7 @@ app.post("/createTable", async (_, res) => {
       currency_type TEXT 
     )`;
     await pool.query(tableQueryText);
-    res.send("ok");
+    res.send("okey");
   } catch (error) {
     console.error(error);
   }
@@ -68,7 +68,7 @@ app.post("/droptable", async (_, res) => {
   try {
     const tableQueryText = `DROP TABLE users`;
     await pool.query(tableQueryText);
-    res.end("okey");
+    res.send("OK");
   } catch (error) {
     console.log(error);
   }

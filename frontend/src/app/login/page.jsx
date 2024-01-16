@@ -10,19 +10,25 @@ export default function LoginPage() {
     router.push("sign");
   };
 
-  const [email, setEmail] = "";
-  const [password, setPassword] = "";
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:8010/users", {
+      const response = await axios.post("http://localhost:8010/users/auth", {
         email,
         password,
       });
-    } catch {
-      console.error(err);
+      console.log(response.data);
+
+      if (response.data === "ok") {
+        router.push("dashboard");
+      } else {
+        console.log("Login failed:", response.data);
+      }
+      console.log(response);
+    } catch (error) {
+      console.error("Login error:", error);
     }
   };
 
@@ -34,11 +40,15 @@ export default function LoginPage() {
         <p>Welcome back, Please enter your details</p>
         <div className="flex flex-col gap-2">
           <input
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
             className="p-2 rounded-lg border-2 border-gray-300"
             type="email"
             placeholder="Email"
           />
           <input
+            onChange={(event) => setPassword(event.target.value)}
+            value={password}
             className="p-2 rounded-lg border-2 border-gray-300"
             type="password"
             placeholder="Password"

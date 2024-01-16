@@ -2,20 +2,22 @@ import { RecoredAside } from "@/utils/RecoredAside";
 import { Plus } from "../../public/Icons";
 import Modal from "./recordModal";
 
-
 export default function () {
   return (
     <div className="flex flex-col w-[250px]  rounded-xl bg-white py-3 px-3 gap-3">
       <h1 className="font-semibold mb-3 text-xl">Records</h1>
       <div className="flex flex-col gap-6">
-        <button
-          onClick={() => document.getElementById("my_modal_5").showModal()}
-          className="flex bg-blue-600 p-1 rounded-3xl text-white w-full justify-center items-center gap-2"
-        >
+        <button onClick={Modal } className="flex bg-blue-600 p-1 rounded-3xl text-white w-full justify-center items-center gap-2">
+          <Plus />
           add
+        
         </button>
-        <Modal />
-        <button className="btn">open modal</button>
+        <button
+          className="btn"
+          
+        >
+          open modal
+        </button>
 
         <input
           type="search"

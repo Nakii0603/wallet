@@ -20,10 +20,8 @@ export default function Currency() {
         console.log(data, "data");
 
         const response = await axios.post("http://localhost:8010/users", {
-          currency: valiut, 
+          currency: valiut,
         });
-
-
         console.log(response.data);
       } catch (error) {
         console.error("Error updating data with currency:", error);

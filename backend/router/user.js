@@ -14,3 +14,4 @@ user.route("/").get(getUsers).post(createUser);
 user.route("/user").get(getOneUser).delete(deleteUser);
 
 export { user };
+

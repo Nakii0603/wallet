@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { user } from "./router/user.js";
 import { pool } from "./db.js";
 import cors from "cors";
+import { transaction } from "../backend/router/transaction.js";
 
 dotenv.config();
 
@@ -12,7 +13,7 @@ const app = express();
 app.use(cors({ origin: "*" }));
 
 app.use(express.json());
-
+app.use("/createTransaction", transaction);
 app.use("/users", user);
 const enableUuidOsspExtensionQuery =
   'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"';
@@ -46,16 +47,37 @@ app.post("/createTable", async (_, res) => {
     console.error(error);
   }
 });
-
 app.post("/createTableCategory", async (_, res) => {
   try {
     const tableQueryText = `
     CREATE TABLE IF NOT EXISTS category (
-      name VARCHAR(255) NOT NULL,
-      descrition TEXT,
-      createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-      updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+      name VARCHAR(100),
+      description TEXT,
+      createdAt TIMESTAMP,
+      updatedAt TIMESTAMP,
       category_image TEXT
+    )`;
+    await pool.query(tableQueryText);
+    res.send("ok");
+  } catch (error) {
+    console.error(error);
+  }
+});
+
+app.post("/createTableTran", async (_, res) => {
+  try {
+    const tableQueryText = `
+    CREATE TABLE IF NOT EXISTS transaction (
+      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+      user_id UUID REFERENCES users(id),
+      name TEXT,
+      amount REAL NOT NULL,
+      transaction_type VARCHAR(3) CHECK (transaction_type IN ('INC', 'EXP')),
+      description TEXT,
+      createdAt TIMESTAMP DEFAULT NOW(),
+      updatedAt TIMESTAMP DEFAULT NOW(),
+      category_id UUID REFERENCES category(id)  
     )`;
     await pool.query(tableQueryText);
     res.send("ok");

@@ -3,18 +3,18 @@
 export default function Modal() {
   return (
     <dialog id="my_modal_3" className="modal">
-      <div className="bg-white w-[700px] rounded-3xl p-[24px]  border-box">
+      <div className="bg-white w-[800px] rounded-3xl p-[24px]  border-box">
         <form className="flex justify-between">
-          <h2>Add Record</h2>
+          <h2 className="px-[24px] border-box ">Add Record</h2>
           <button className="">✕</button>
         </form>
         <div className="flex">
-          <div className="w-[50%] ">
-            <div className="flex w-[325px] gap-[8px]">
-              <button className=" bg-blue-600 text-white rounded-3xl w-[170px] h-[40px] ">
+          <div className="w-[50%] p-[24px] border-box flex flex-col gap-4 ">
+            <div className="flex  gap-[8px]">
+              <button className=" bg-blue-600 text-white px-[24px] py-[8px] rounded-3xl  ">
                 Expense
               </button>
-              <button className="text-black rounded-3xl w-[170px] h-[40px] bg-[#F3F4F6] ">
+              <button className="text-black rounded-3xl px-[24px] py-[8px] bg-[#F3F4F6] ">
                 Income
               </button>
             </div>
@@ -40,7 +40,7 @@ export default function Modal() {
                     type="text"
                     name="price"
                     id="price"
-                    class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    class=" w-full  py-1.5 pl-7 pr-20 border-2 border-[#9CA3AF] rounded-[8px] focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                     placeholder="0.00"
                   />
                   <div class="absolute inset-y-0 right-0 flex items-center">
@@ -50,7 +50,7 @@ export default function Modal() {
                     <select
                       id="currency"
                       name="currency"
-                      class="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                      class="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset sm:text-sm"
                     >
                       <option>Choose currency</option>
                       <option>TUG</option>
@@ -60,21 +60,24 @@ export default function Modal() {
                 </div>
               </div>
             </div>
-            <div>date</div>
+            <input
+              type="date"
+              className="border-2 border-[#9CA3AF] rounded-[8px]"
+            />
             <button className="btn bg-blue-600 text-white rounded-3xl w-full btn-primary">
               Add Record
             </button>
           </div>
-          <div>
+          <div className="w-[50%] p-[24px] border-box">
             <p>Peyee</p>
             <input
               type="text"
-              className="border-2 rounded-[8px] border-[#9CA3AF]"
+              className="border-2 w-[100%] h-[35px] rounded-[8px] border-[#9CA3AF]"
             />
             <p>Note</p>
             <input
               type="text"
-              className="border-2 w-full h-full rounded-[8px] border-[#9CA3AF]"
+              className="border-2 w-[100%] h-[250px]  rounded-[8px] border-[#9CA3AF]"
             />
           </div>
         </div>

@@ -16,13 +16,10 @@ export default function Navbar() {
             <GeldLogo />
           </button>
           <button className="font-semibold">Dashboard</button>
-          <button>Records</button>
+          <button onClick={jump}>Records</button>
         </div>
         <div className="flex ledaing-none gap-9 items-center">
-          <button
-            onClick={jump}
-            className="flex items-center border-box px-2 bg-blue-600 text-white rounded-3xl"
-          >
+          <button className="flex items-center border-box px-2 bg-blue-600 text-white rounded-3xl">
             + Record
           </button>
           <Pro />

@@ -25,39 +25,26 @@ export default function Modal() {
                 className="border-2 rounded-[8px] border-[#9CA3AF]"
               />
             </div>
-            <div>
+            <div className="flex flex-col gap-[12px]">
               <p>Category</p>
               <div>
                 <label
                   for="price"
                   class="block text-sm font-medium leading-6 text-gray-900"
                 ></label>
-                <div class="relative mt-2 rounded-md shadow-sm">
-                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                    <span class="text-gray-500 sm:text-sm">$</span>
-                  </div>
-                  <input
-                    type="text"
-                    name="price"
-                    id="price"
-                    class=" w-full  py-1.5 pl-7 pr-20 border-2 border-[#9CA3AF] rounded-[8px] focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
-                    placeholder="0.00"
-                  />
-                  <div class="absolute inset-y-0 right-0 flex items-center">
-                    <label for="currency" class="sr-only">
-                      Currency
-                    </label>
-                    <select
-                      id="currency"
-                      name="currency"
-                      class="h-full rounded-md border-0 bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:ring-2 focus:ring-inset sm:text-sm"
-                    >
-                      <option>Choose currency</option>
-                      <option>TUG</option>
-                      <option>USD</option>
-                    </select>
-                  </div>
-                </div>
+
+                <label for="currency" class="sr-only">
+                  Currency
+                </label>
+                <select
+                  id="currency"
+                  name="currency"
+                  class="border-2 rounded-[8px] border-[#9CA3AF]  text-gray-500"
+                >
+                  <option>Choose currency</option>
+                  <option>TUG</option>
+                  <option>USD</option>
+                </select>
               </div>
             </div>
             <input

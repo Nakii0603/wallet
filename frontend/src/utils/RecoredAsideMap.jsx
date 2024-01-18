@@ -5,36 +5,6 @@ const arr = [
   {
     title: "Food & Drinks",
   },
-  {
-    title: "Shopping",
-  },
-  {
-    title: "Housing",
-  },
-  {
-    title: "Transportation",
-  },
-  {
-    title: "Vehicle",
-  },
-  {
-    title: "Life & Entertainment",
-  },
-  {
-    title: "Communication, PC",
-  },
-  {
-    title: "Financial expenses",
-  },
-  {
-    title: "Investments",
-  },
-  {
-    title: "Income",
-  },
-  {
-    title: "Others",
-  },
 ];
 
 export function RecoredAside() {

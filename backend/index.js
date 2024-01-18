@@ -4,6 +4,7 @@ import { user } from "./router/user.js";
 import { pool } from "./db.js";
 import cors from "cors";
 import { transaction } from "../backend/router/transaction.js";
+import { category } from "./router/category.js";
 
 dotenv.config();
 
@@ -15,6 +16,8 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use("/createTransaction", transaction);
 app.use("/users", user);
+app.use("category", category);
+
 const enableUuidOsspExtensionQuery =
   'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"';
 pool.query(enableUuidOsspExtensionQuery, (err, result) => {
@@ -52,7 +55,7 @@ app.post("/createTableCategory", async (_, res) => {
     const tableQueryText = `
     CREATE TABLE IF NOT EXISTS category (
       id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-      name VARCHAR(100),
+      category TEXT,
       description TEXT,
       createdAt TIMESTAMP,
       updatedAt TIMESTAMP,
@@ -88,7 +91,7 @@ app.post("/createTableTran", async (_, res) => {
 
 app.post("/droptable", async (_, res) => {
   try {
-    const tableQueryText = `DROP TABLE users`;
+    const tableQueryText = `DROP TABLE if exists category cascade`;
     await pool.query(tableQueryText);
     res.send("OK");
   } catch (error) {

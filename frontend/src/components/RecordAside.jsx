@@ -1,7 +1,8 @@
 "use client";
-import { RecoredAside } from "@/utils/RecoredAside";
+import { RecoredAside } from "@/utils/RecoredAsideMap";
 import { Plus } from "../../public/Icons";
 import Modal from "./recordModal";
+import CategoryModal from "./CategoryModal";
 
 export default function () {
   return (
@@ -46,8 +47,12 @@ export default function () {
         </div>
         <div className="flex flex-col gap-4 pl-4">
           <RecoredAside />
-          <button className="flex items-center gap-3">
+          <button
+            onClick={() => document.getElementById("my_modal_5").showModal()}
+            className="flex items-center rounded- text-white bg-blue-600 btn gap-3"
+          >
             <Plus /> Add Category
+            <CategoryModal />
           </button>
         </div>
       </div>

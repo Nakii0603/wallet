@@ -1,6 +1,4 @@
-
 import { pool } from "../db.js";
-
 export const createTransaction = async (req, res) => {
   const { user_id, name, amount, transaction_type, description, category_id } =
     req.body;

@@ -1,14 +1,14 @@
 "use client";
 
-import { data } from "autoprefixer";
+import axios from "axios";
 import { useState } from "react";
 
 export default function CategoryModal() {
   const [category, setCategory] = useState("");
-
-  function a() {
-    console.log(category);
-  }
+  const a = async () => {
+    const res = await axios.post("http://localhost:8010/category/getdata");
+    setCategory(res.data);
+  };
   return (
     <dialog id="my_modal_5" className="modal">
       <div className="bg-white flex flex-col gap-4  rounded-3xl p-[24px] border-box">

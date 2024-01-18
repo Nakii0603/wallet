@@ -12,7 +12,6 @@ const PORT = process.env.PORT || 8010;
 const app = express();
 
 app.use(cors({ origin: "*" }));
-
 app.use(express.json());
 app.use("/createTransaction", transaction);
 app.use("/users", user);

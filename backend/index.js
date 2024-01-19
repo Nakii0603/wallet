@@ -15,7 +15,7 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use("/createTransaction", transaction);
 app.use("/users", user);
-app.use("category", category);
+app.use("/category", category);
 
 const enableUuidOsspExtensionQuery =
   'CREATE EXTENSION IF NOT EXISTS "uuid-ossp"';
@@ -45,23 +45,6 @@ app.post("/createTable", async (_, res) => {
     )`;
     await pool.query(tableQueryText);
     res.send("okey");
-  } catch (error) {
-    console.error(error);
-  }
-});
-app.post("/createTableCategory", async (_, res) => {
-  try {
-    const tableQueryText = `
-    CREATE TABLE IF NOT EXISTS category (
-      id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-      category TEXT,
-      description TEXT,
-      createdAt TIMESTAMP,
-      updatedAt TIMESTAMP,
-      category_image TEXT
-    )`;
-    await pool.query(tableQueryText);
-    res.send("ok");
   } catch (error) {
     console.error(error);
   }

@@ -28,14 +28,13 @@ export default function Modal() {
             <div className="flex flex-col gap-[12px]">
               <p>Category</p>
               <div>
-                <label
+                <div
                   for="price"
                   class="block text-sm font-medium leading-6 text-gray-900"
-                ></label>
-
-                <label for="currency" class="sr-only">
+                ></div>
+                <div for="currency" class="sr-only">
                   Currency
-                </label>
+                </div>
                 <select
                   id="currency"
                   name="currency"

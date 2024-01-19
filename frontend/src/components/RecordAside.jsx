@@ -3,8 +3,22 @@ import { RecoredAside } from "@/utils/RecoredAsideMap";
 import { Plus } from "../../public/Icons";
 import Modal from "./recordModal";
 import CategoryModal from "./CategoryModal";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-export default function () {
+const api = "http://localhost:8010/category/create";
+
+export default function addCat() {
+  const [name, setName] = useState("");
+  const addCat = async () => {
+    try {
+      const res = await axios.post(api, { name: name });
+      console.log(res.data);
+    } catch (err) {
+      console.error();
+    }
+  };
+
   return (
     <div className="flex flex-col w-[280px]  rounded-xl bg-white py-3 px-3 gap-3">
       <h1 className="font-semibold mb-3 text-xl">Records</h1>
@@ -47,8 +61,13 @@ export default function () {
         </div>
         <div className="flex flex-col gap-4 pl-4">
           <RecoredAside />
+          <input
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+            className="border-2 border-[#9CA3AF]"
+          />
           <button
-            onClick={() => document.getElementById("my_modal_5").showModal()}
+            onClick={addCat}
             className="flex items-center rounded- text-white bg-blue-600 btn gap-3"
           >
             <Plus /> Add Category

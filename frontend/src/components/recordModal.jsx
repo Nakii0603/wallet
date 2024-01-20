@@ -1,6 +1,9 @@
 "use client";
 
 export default function Modal() {
+  function a() {
+    console.log(a);
+  }
   return (
     <dialog id="my_modal_3" className="modal">
       <div className="bg-white w-[800px] rounded-3xl p-[24px]  border-box">
@@ -11,7 +14,7 @@ export default function Modal() {
         <div className="flex">
           <div className="w-[50%] p-[24px] border-box flex flex-col gap-4 ">
             <div className="flex  gap-[8px]">
-              <button className=" bg-blue-600 text-white px-[24px] py-[8px] rounded-3xl  ">
+              <button onClick={a} className=" bg-blue-600 text-white px-[24px] py-[8px] rounded-3xl  ">
                 Expense
               </button>
               <button className="text-black rounded-3xl px-[24px] py-[8px] bg-[#F3F4F6] ">
